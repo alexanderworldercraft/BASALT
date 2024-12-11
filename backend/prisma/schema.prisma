@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Etat {
+  EtatID   Int       @id @default(autoincrement())
+  Nom      String    @db.VarChar(100)
+  Utilisateurs Utilisateur[] // Relation avec les utilisateurs
+}
+
+model Grade {
+  GradeID      Int           @id @default(autoincrement())
+  Nom          String        @unique @db.VarChar(50) // Ex. "Admin", "Utilisateur"
+  Utilisateurs Utilisateur[] // Relation avec les utilisateurs
+}
+
+model Utilisateur {
+  UtilisateurID Int       @id @default(autoincrement())
+  Surnom        String    @unique
+  MotDePasse    String    @db.VarChar(255)
+  CheminImage   String?   @db.VarChar(255)
+  Email         String    @db.VarChar(100)
+  Salt          String    @db.VarChar(255)
+  GradeID       Int       // Clé étrangère vers Grade
+  EtatID        Int
+  Grade         Grade     @relation(fields: [GradeID], references: [GradeID]) // Relation avec Grade
+  Etat         Etat     @relation(fields: [EtatID], references: [EtatID]) // Relation avec Etat
+
+  @@index([GradeID], map: "Utilisateur_GradeID_fkey") // Index pour optimiser les recherches par grade
+  @@index([EtatID], map: "Utilisateur_EtatID_fkey") // Index pour optimiser les recherches par grade
+}
