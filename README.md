@@ -26,7 +26,7 @@ Ce nom reflète la nature du projet en tant que fondation solide ("basalt" étan
 ## Configuration du projet
 ### 1. ***Cloner le référentiel***
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/alexanderworldercraft/BASALT.git
     cd BaseStructureFastifyPrismaAuthReact
     ```
 ### 2. ***Configuration du Backend***
@@ -132,10 +132,10 @@ Ce nom reflète la nature du projet en tant que fondation solide ("basalt" étan
     L'application React devrait maintenant être en cours d'exécution via le serveur **Backend**.
 ---
 ## Notes de développement
-- Le backend fonctionne sur Fastify et écoute sur `https://localhost:le ports choisi` par défaut.
+- Le backend fonctionne sur Fastify et écoute sur `https://localhost:1234` par défaut.
 - Le frontend fonctionne sur React et écoute sur `l'adresse du backend` par défaut.
 - Mettez à jour les configurations si nécessaire pour la production.
-- Les Routes du Backend sont référencer sur l'adresse `https://localhost:le ports choisi/documentation` par défaut
+- Les Routes du Backend sont référencer sur l'adresse `https://localhost:1234/documentation` par défaut
 ---
 ## Commandes utiles
 ### Backend
