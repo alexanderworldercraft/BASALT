@@ -22,7 +22,7 @@ const LoginPage = () => {
       localStorage.setItem('token', response.data.token);
 
       // Rediriger vers le tableau de bord
-      navigate('/');
+      navigate('/profile');
     } catch (err) {
       console.error('Login failed:', err.response?.data || err.message);
       setError(err.response?.data?.error || 'Une erreur est survenue');

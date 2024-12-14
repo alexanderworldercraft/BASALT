@@ -45,8 +45,8 @@ const fastify = Fastify({
 fastify.register(fastifySwagger, {
     openapi: {
         info: {
-            title: 'BaseStructureFastifyPrismaAuthReact API',
-            description: 'Base API pour les applications, mise en place des bases de l\'authentificateur et la gestion des utilisateurs.',
+            title: 'VEHICLE API',
+            description: 'API pour l\'application VEHICLE, Application web pour stocker et accéder facilement aux informations de mes véhicules sur un serveur personnel depuis tous mes appareils.',
             version: '1.0.0'
         },
         externalDocs: {

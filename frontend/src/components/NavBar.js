@@ -7,7 +7,7 @@ import api from '../services/api';
 const apiBaseUrl = process.env.REACT_APP_URL_LOCAL;
 
 const navigation = [
-    //{ name: 'Tableau de bord', href: '/dashboard' }, // pour une page tableau de bord
+    //{ name: 'Tableau de bord', href: '/dashboard' },
 ];
 
 function classNames(...classes) {

@@ -5,15 +5,10 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Générer un mot de passe sécurisé
-  const salt = await bcrypt.genSalt(10);
-  const hashedPasswordSuperAdmin = await bcrypt.hash(`${process.env.PASSWORDSUPERADMIN}`, salt);
-  const hashedPasswordAdmin = await bcrypt.hash(`${process.env.PASSWORDADMIN}`, salt);
-
-  const SurnomSuperAdmin = `${process.env.SURNOMSUPERADMIN}`;
-  const SurnomAdmin = `${process.env.SURNOMADMIN}`;
-
-  const EmailSuperAdmin = `${process.env.EMAILSUPERADMIN}`;
-  const EmailAdmin = `${process.env.EMAILADMIN}`;
+  const saltSuperAdmin = await bcrypt.genSalt(10);
+  const saltAdmin = await bcrypt.genSalt(10);
+  const hashedPasswordSuperAdmin = await bcrypt.hash(`${process.env.PASSWORDSUPERADMIN}`, saltSuperAdmin); // B@ttleF0r@zer0th+45
+  const hashedPasswordAdmin = await bcrypt.hash(`${process.env.PASSWORDADMIN}`, saltAdmin); // B@ttleF0r@zer0th+45
 
   // Ajouter des grades par défaut
   await prisma.grade.createMany({
@@ -44,17 +39,17 @@ async function main() {
   await prisma.utilisateur.createMany({
     data: [
       {
-        Surnom: SurnomSuperAdmin, // Remplacez par le surnom souhaité
-        Email: EmailSuperAdmin, // Remplacez par un email valide
-        Salt: salt,
+        Surnom: `${process.env.USERNAMESUPERADMIN}`, // Remplacez par le surnom souhaité
+        Email: `${process.env.EMAILSUPERADMIN}`, // Remplacez par un email valide
+        Salt: saltSuperAdmin,
         MotDePasse: hashedPasswordSuperAdmin,
         GradeID: 1,
         EtatID: 1,
       },
       {
-        Surnom: SurnomAdmin, // Remplacez par le surnom souhaité
-        Email: EmailAdmin, // Remplacez par un email valide
-        Salt: salt,
+        Surnom: `${process.env.USERNAMEADMIN}`, // Remplacez par le surnom souhaité
+        Email: `${process.env.EMAILADMIN}`, // Remplacez par un email valide
+        Salt: saltAdmin,
         MotDePasse: hashedPasswordAdmin,
         GradeID: 2,
         EtatID: 1,

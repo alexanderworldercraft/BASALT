@@ -10,26 +10,28 @@ import SettingsPage from './components/SettingsPage';
 import Administration from './components/AdministrationPage';
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 
+const NameApp = "";
+
 const routesMeta = {
   "/login": {
-    title: "Connexion",
-    description: "Connectez-vous pour accéder à votre compte VEHICLE.",
+    title: `Connexion - ${NameApp}`,
+    description: `Connectez-vous pour accéder à votre compte ${NameApp}.`,
   },
   "/register": {
-    title: "Inscription",
-    description: "Créez un compte pour accéder à VEHICLE.",
+    title: `Inscription - ${NameApp}`,
+    description: `Créez un compte pour accéder à ${NameApp}.`,
   },
   "/profile": {
-    title: "Profil",
-    description: "Bienvenue sur votre profil VEHICLE.",
+    title: `Profil - ${NameApp}`,
+    description: "Bienvenue sur votre profil.",
   },
   "/settings": {
-    title: "Paramètres",
+    title: `Paramètres - ${NameApp}`,
     description: "Bienvenue sur votre Paramètres.",
   },
   "/administration": {
-    title: "Administration",
-    description: "Gérez les utilisateurs et les paramètres administratifs de VEHICLE.",
+    title: `Administration - ${NameApp}`,
+    description: `Gérez les utilisateurs et les paramètres administratifs de ${NameApp}.`,
   },
   // Ajoute d'autres routes ici...
 };
@@ -37,8 +39,8 @@ const routesMeta = {
 function MetaUpdater() {
   const location = useLocation();
   const meta = routesMeta[location.pathname] || {
-    title: "BaseStructureFastifyPrismaAuthReact",
-    description: "Bienvenue sur BaseStructureFastifyPrismaAuthReact, votre base d'application.",
+    title: "VEHICLE",
+    description: "Bienvenue sur VEHICLE, votre application pour gérer vos véhicules.",
   };
 
   return (
