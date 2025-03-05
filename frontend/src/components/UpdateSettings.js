@@ -106,7 +106,7 @@ const UpdateSettings = () => {
             <label className="block text-gray-200">Surnom</label>
             <input
               type="text"
-              className="w-full px-3 py-2 border hover:border-amber-600 border-amber-500 bg-black rounded"
+              className="w-full px-3 py-2 border hover:border-sky-600 border-sky-500 bg-black rounded"
               value={surnom}
               onChange={(e) => setSurnom(e.target.value)}
             />
@@ -115,7 +115,7 @@ const UpdateSettings = () => {
             <label className="block text-gray-200">Email</label>
             <input
               type="email"
-              className="w-full px-3 py-2 border hover:border-amber-600 border-amber-500 bg-black rounded"
+              className="w-full px-3 py-2 border hover:border-sky-600 border-sky-500 bg-black rounded"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -124,7 +124,7 @@ const UpdateSettings = () => {
             <label className="block text-gray-200">Ancien mot de passe</label>
             <input
               type="password"
-              className="w-full px-3 py-2 border hover:border-amber-600 border-amber-500 bg-black rounded"
+              className="w-full px-3 py-2 border hover:border-sky-600 border-sky-500 bg-black rounded"
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
             />
@@ -133,7 +133,7 @@ const UpdateSettings = () => {
             <label className="block text-gray-200">Nouveau mot de passe</label>
             <input
               type="password"
-              className="w-full px-3 py-2 border hover:border-amber-600 border-amber-500 bg-black rounded"
+              className="w-full px-3 py-2 border hover:border-sky-600 border-sky-500 bg-black rounded"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
@@ -142,7 +142,7 @@ const UpdateSettings = () => {
             <label className="block text-gray-200">Confirmer le nouveau mot de passe</label>
             <input
               type="password"
-              className="w-full px-3 py-2 border hover:border-amber-600 border-amber-500 bg-black rounded"
+              className="w-full px-3 py-2 border hover:border-sky-600 border-sky-500 bg-black rounded"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
@@ -157,7 +157,7 @@ const UpdateSettings = () => {
           <div class="flex gap-3 mb-4">
             <div class="flex h-6 shrink-0 items-center">
               <div class="group grid size-4 grid-cols-1">
-                <input id="removeImage" name="removeImage" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-amber-600 checked:bg-amber-600 indeterminate:border-amber-600 indeterminate:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                <input id="removeImage" name="removeImage" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-sky-600 checked:bg-gradient-to-r from-sky-800 to-sky-700 indeterminate:border-sky-600 indeterminate:bg-gradient-to-r from-sky-800 to-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
                   checked={removeImage}
                   onChange={handleRemoveImage} />
                 <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
@@ -172,7 +172,7 @@ const UpdateSettings = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded"
+            className="w-full bg-gradient-to-r from-sky-800 to-sky-700 hover:from-sky-900 hover:to-sky-950 text-white py-2 rounded"
           >
             Sauvegarder
           </button>

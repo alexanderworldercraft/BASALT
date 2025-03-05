@@ -70,31 +70,6 @@ export const loginSchema = {
     },
 };
 
-export const updateUserSchema = {
-    description: 'Met à jour les informations d’un utilisateur existant.',
-    tags: ['Users'],
-    body: {
-        type: 'object',
-        properties: {
-            surnom: { type: 'string', description: 'Nouveau surnom.' },
-            email: { type: 'string', format: 'email', description: 'Nouvelle adresse email.' },
-            motDePasse: { type: 'string', description: 'Nouveau mot de passe, encodé.' },
-            removeImage: { type: 'boolean', description: 'Indique si l’image doit être supprimée.' },
-        },
-    },
-    response: {
-        200: {
-            type: 'object',
-            properties: {
-                message: { type: 'string', description: 'Message de succès.' },
-                user: userSchema,
-            },
-        },
-        400: errorResponseSchema,
-        401: errorResponseSchema,
-    },
-};
-
 export const deleteProfileImageSchema = {
     description: "Supprime l'image de profil d’un utilisateur.",
     tags: ['Users'],

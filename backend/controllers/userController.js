@@ -47,16 +47,16 @@ export const userController = {
       for await (const part of parts) {
         if (part.file) {
           const fileName = `${Date.now()}-${part.filename}`;
-          const uploadPath = path.join(__dirname, '../uploads', fileName);
+          const uploadPath = path.join(__dirname, '../uploads/pp', fileName);
 
           await fs.promises.writeFile(uploadPath, await part.toBuffer());
-          cheminImage = `/uploads/${fileName}`;
+          cheminImage = `/uploads/pp/${fileName}`;
         } else {
           fields[part.fieldname] = part.value;
         }
       }
 
-      const { surnom, email, motDePasse, gradeId } = fields; // Inclure gradeId parmi les champs
+      const { surnom, email, motDePasse, gradeId } = fields;
 
       if (!surnom || !email || !motDePasse) {
         return reply.status(400).send({ error: 'Surnom, Email, and Mot de Passe are required' });
@@ -136,7 +136,7 @@ export const userController = {
       const token = jwt.sign(
         { userId: user.UtilisateurID, surnom: user.Surnom },
         process.env.JWT_SECRET,
-        { expiresIn: '1h' } // Expiration en 1 heure
+        { expiresIn: '15h' } // Expiration en 7 heure
       );
 
       // Répondre avec le jeton
@@ -273,14 +273,26 @@ export const userController = {
       let newImagePath = null;
       let oldImagePath = null; // Pour stocker le chemin de l'ancienne image si elle existe
 
+      const user = await userRepository.getUserById(decoded.userId); // Récupère les infos actuelles de l'utilisateur
+      const idNumber = user.UtilisateurID;
+      const id = idNumber.toString();
+
+
       // Lire les champs et fichiers
       for await (const part of parts) {
         if (part.file) {
           const fileName = `${Date.now()}-${part.filename}`;
-          const uploadPath = path.join(__dirname, '../uploads', fileName);
+          const uploadPath = path.join(__dirname, '../uploads/pp/', id, '/', fileName);
+          
+          // Vérifier si le dossier existe
+          const dirPath = path.join(__dirname, '../uploads/pp/', id);
+          if (!fs.existsSync(dirPath)) {
+            // Créer le dossier s'il n'existe pas
+            fs.mkdirSync(dirPath, { recursive: true });
+          }
 
           await fs.promises.writeFile(uploadPath, await part.toBuffer());
-          newImagePath = `/uploads/${fileName}`;
+          newImagePath = `/uploads/pp/${id}/${fileName}`;
         } else {
           fields[part.fieldname] = part.value;
         }
@@ -289,7 +301,6 @@ export const userController = {
       const { surnom, email, motDePasse, removeImage } = fields;
 
       const updateData = {};
-      const user = await userRepository.getUserById(decoded.userId); // Récupère les infos actuelles de l'utilisateur
 
       if (!user) {
         return reply.status(404).send({ error: 'User not found' });
